@@ -4,16 +4,16 @@
 1.  gdb crackme0x01으로 gdb로 파일을 실행시켜준다.
 ![1](https://raw.githubusercontent.com/Kim-kanghyun/hw1-1/master/hw1/img/1.PNG)
 2. r로 파일을 실행시켜 파일이 어떤식으로 돌아가는 지 확인한다.
-![2](https://raw.githubusercontent.com/Kim-kanghyun/hw1-1/master/hw1/img/2.png)
+![2](https://raw.githubusercontent.com/Kim-kanghyun/hw1-1/master/hw1/img/2.PNG)
 3. 확인해 보니 password를 입력해야 하는 것 같다.
 4. disass main으로 main함수의 소스코드를 어셈블리어로 변환한 결과를 본다.
-![3](https://raw.githubusercontent.com/Kim-kanghyun/hw1-1/master/hw1/img/3.png)
+![3](https://raw.githubusercontent.com/Kim-kanghyun/hw1-1/master/hw1/img/3.PNG)
 5. 결국 비밀번호를 받는 부분은 scanf부분이므로 b scanf 전 줄을 통해 bp를 설정해준다.
 : b* main+59
 6. r을 실행해 중단점에서 멈추고 scanf가 실행되었을 때 값을 관찰해보니 scanf는 %d값으로 받고 0xffffd644에 값을 넣는다는 것을 확인할 수 있었다.
-![4](https://raw.githubusercontent.com/Kim-kanghyun/hw1-1/master/hw1/img/4.png)
+![4](https://raw.githubusercontent.com/Kim-kanghyun/hw1-1/master/hw1/img/4.PNG)
 7. ni로 다음 줄을 보면 cmp로 ebp-4의 값과 0x149a를 비교한다는 것을 알 수 있다.
-![5](https://raw.githubusercontent.com/Kim-kanghyun/hw1-1/master/hw1/img/5.png)
+![5](https://raw.githubusercontent.com/Kim-kanghyun/hw1-1/master/hw1/img/5.PNG)
 8. p $ebp-4로 보니 ebp-4의 주소값이 0xffffd644인 것을 확인할 수 있다. 즉 scanf에서 받은 값과 0x149a를 비교한다는 말이므로 위 값을 10진수로 변환한 값인 5274를 입력하면 다른 결과가 나올 것이다.
 ![6](https://raw.githubusercontent.com/Kim-kanghyun/hw1-1/master/hw1/img/6.png)
 9. 확인해보니 이런 메세지가 뜨고 종료된다.
