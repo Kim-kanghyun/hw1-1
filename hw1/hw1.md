@@ -2,7 +2,7 @@
 
 ## crackme0x01
 1.  gdb crackme0x01으로 gdb로 파일을 실행시켜준다.
-![1](./img/1.png)
+![1](https://raw.githubusercontent.com/Kim-kanghyun/hw1-1/master/hw1/img/1.PNG)
 2. r로 파일을 실행시켜 파일이 어떤식으로 돌아가는 지 확인한다.
 ![2](./img/2.png)
 3. 확인해 보니 password를 입력해야 하는 것 같다.
